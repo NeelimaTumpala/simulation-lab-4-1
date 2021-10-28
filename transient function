@@ -1,0 +1,19 @@
+clear all;
+clc;
+Xmin=-6;
+Xmax=6;
+Ymin=-6;
+Ymax=6;
+axis([Xmin Xmax Ymin Ymax]);
+n=[100 200 75];
+d=[1 27.5 261.5 1039 1668 864];
+sys = tf(n,d);
+rlocus(sys);
+sgrid(0.2,0.01);
+k=rlocfind(sys);
+figure;
+t=0:0.01:20;
+n=[k 2*k 0.75*k];
+d=[1 27.5 261.5 1039 1668 864+k];
+c=step(n,d,t);
+plot(t,c)
