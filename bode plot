@@ -1,0 +1,14 @@
+clear al;
+clc;
+num=[100 200 75];
+den=[1 27.5 261.5 1039 1668 864];
+sys=tf(num,den);
+bode(sys);
+margin(sys);
+[p,q]=margin(num,den);
+disp('Gain margin is linear scale= ');
+disp(p);
+disp('Gain margin in db= ');
+disp(20*log10(p));
+disp('Phase margin= ');
+disp(q);
